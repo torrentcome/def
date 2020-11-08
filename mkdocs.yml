@@ -1,0 +1,9 @@
+site_name: ==Def==
+theme: 
+ name: material
+ palette:
+  primary: indigo
+  accent: lime
+ icon:
+  logo: material/bottle-tonic-skull
+ favicon: material/bottle-tonic-skull
