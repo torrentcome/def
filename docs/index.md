@@ -1,4 +1,4 @@
-# Welcome to ==Def==
+# Welcome
 
 Powered by [mkdocs.org](https://squidfunk.github.io/mkdocs-material/)
 
