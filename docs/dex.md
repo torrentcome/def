@@ -1,7 +1,9 @@
 # Dex
 ## Dex = Dalvik Executable Format
 
-One of the most remarkable features of the Dalvik Virtual Machine (the workhorse under the Android system) is that it does not use Java bytecode. Instead, a homegrown format called DEX was introduced and not even the bytecode instructions are the same as Java bytecode instructions.
+One of the most remarkable features of the Dalvik Virtual Machine (the workhorse under the Android system) is that it does not use Java bytecode. 
+
+Instead, a homegrown format called DEX was introduced and not even the bytecode instructions are the same as Java bytecode instructions.
 
 Compiled Android application code file.
 Android programs are compiled into .dex (Dalvik Executable) files, which are in turn zipped into a single .apk file on the device. .dex files can be created by automatically translating compiled applications written in the Java programming language.
