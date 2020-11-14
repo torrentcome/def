@@ -15,7 +15,7 @@ ONU could be connected by various methods and cable types, like twisted-pair cop
   <img src ="../image/ont.jpg" />
 </figure>
 
-### Looks like
+### Photo
 <figure>
   <img src ="../image/ont2.jpg" />
 </figure>

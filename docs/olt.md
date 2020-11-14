@@ -11,7 +11,7 @@ The OLT has two float directions: upstream (getting distributing different types
 
 The maximum distance supported for transmitting across the ODN is 20 km.
 
-### Look like
+### Photo
 <figure>
   <img src ="../image/olt.jpg" />
 </figure>
