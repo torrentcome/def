@@ -14,5 +14,10 @@ jobs:
           python-version: 3.x
       - run: pip install mkdocs-material
       - run: mkdocs gh-deploy --force
-      - with:
-          personal_token:${{ secrets.GH_SECRET }}
+      - name: Build site
+      - run: mkdocs build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.GH_SECRET }}
+          publish_dir: ./site      
