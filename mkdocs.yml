@@ -4,7 +4,7 @@ theme:
  name: material
  palette:
   primary: indigo
-  accent: orange
+  accent: green
  icon:
   logo: material/bottle-tonic-skull
  favicon: material/bottle-tonic-skull
