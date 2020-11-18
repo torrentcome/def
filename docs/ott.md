@@ -1,4 +1,4 @@
-# Ott / IPTV
+# Ott / Iptv
 ## OTT = Over-the-top media service
 
 An over-the-top (OTT) media service is a streaming media service offered directly to viewers via the Internet. OTT bypasses cable, broadcast, and satellite television platforms, the companies that traditionally act as a controller or distributor of such content.[1] It has also been used to describe no-carrier cellphones, where all communications are charged as data,[2] avoiding monopolistic competition, or apps for phones that transmit data in this manner, including both those that replace other call methods[3][4] and those that update software.[4][5]
