@@ -1,11 +1,12 @@
 # Welcome
 
-Powered by [mkdocs.org](https://squidfunk.github.io/mkdocs-material/)
+ * Powered by [mkdocs.org](https://squidfunk.github.io/mkdocs-material/)
+ * Test/Run in local by [docker image] (https://github.com/squidfunk/mkdocs-material/blob/master/Dockerfile)
 
 ## Commands
 
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
+* `docker run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material` - Start the live-reloading docker docs server
+* `.github/workflows/ci.yml` - Buid the website with Github Action
 
 ## Project layout
 
