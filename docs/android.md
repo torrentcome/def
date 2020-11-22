@@ -3,26 +3,22 @@
 
 | CodeName | Version | Api level |
 | ----- | ------ | ------ |
-| Android11 | 11 | API 30 |
+| R | 11 | API 30 |
 | Android10 | 10 | API 29 |
 | Pie | 9 | API 28 |
 | Oreo | 8 | API 26-27 |
 | Nougat | 7 | API 24-25 |
 
 Ideally, the relationship would look more like this in the steady state:
-	```
+```
 minSdkVersion (lowest possible) <= targetSdkVersion == compileSdkVersion (latest SDK)
-	```
-	You’ll hit the biggest audience with a low minSdkVersion and look and act the best by targeting and compiling with the latest SDK — a great way to #BuildBetterApps
+```
+You’ll hit the biggest audience with a low minSdkVersion and look and act the best by targeting and compiling with the latest SDK — a great way to #BuildBetterApps
 
-## Best practice
-
-##  Writing clean code
-
+## Best practice & Writing clean code
 #### Nested If's
-	I hate this, I seriously do, you have statements which require multiple checks like this below code and it goes so deep really deep, In coding which is bad actually.
-
-	```
+I hate this, I seriously do, you have statements which require multiple checks like this below code and it goes so deep really deep, In coding which is bad actually.
+```java
 	if (vehicle != null) {
 		if (vehicle.getCar() != null) {
 			if (vehicle.getCar().getModel() != null) {
@@ -34,16 +30,20 @@ minSdkVersion (lowest possible) <= targetSdkVersion == compileSdkVersion (latest
 ```
 
 And the thing is, It can be avoided, you totally can, like this. As you see below one is more readable and easy to understand.
-```
+```java
 if (vehicle == null || vehicle.getCar() == null || vehicle.getCar().getModel() == null) return;
 
 int price = vehicle.getCar().getModel().getPrice();
 ```
 
 #### Cognitive complexity
-**Definition**: It's a psychological characteristic or psychological variable that indicates how complex or simple is the frame and perceptual skill of a person.
+**Definition**: It's a psychological characteristic or psychological variable that indicates how complex or simple is the frame and perceptual skill of a person
 
-In programming a method with nested if else's and larger size causes high cognitive complexity means less understandability. So better to split large methods into logically separated smaller ones and use above **Nested If's** trick to reduce it. Also SonarLint a static code analysis tool calculates this for you in realtime in android studio you can use sonar to see how you doing.
+In programming a method with nested if else's and larger size causes high cognitive complexity means less understandability.
+ 
+So better to split large methods into logically separated smaller ones and use above **Nested If's** trick to reduce it.
+ 
+Also SonarLint a static code analysis tool calculates this for you in realtime in android studio you can use sonar to see how you doing.
 
 #### Region
 Use regions to separate your code fragments in big classes like britisher's did with divide and rule policy, very effective ask indians.
@@ -171,5 +171,3 @@ Android Debug Database allows you to view databases and shared preferences direc
 * Sort data.
 * Download database.
 * Debug Room inMemory database.
-
-This is a list of all awesome and useful android studio plugins.
