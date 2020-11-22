@@ -29,11 +29,13 @@ This is known as streaming media.
 ### OTT
 In OTT, the video streaming uses the publicly accessible Internet connection. Thus it can be picked up externally. The content transmission is from a third party sectors like Netflix and YouTube.
 Pros:
+
    * Price: Monthly prices as lows as $5, with much free content on YouTube and Hulu.
    * Installation: All you need is a laptop or phone. (Having a streaming TV box like the Roku or Apple TV enhances the experience, though.)
    * Programming: Wide choice of providers, with Netflix and others now offering original programming similar to cable.
 
 Cons:
+
     * Quality: Subject to Internet speed, with “buffering” and other wait-times common for slow connections and peak-hour viewing.
     * Programming: While most shows can be found via major streaming services, some are cable-only and they generally don’t reach OTT streaming until the end of the season.
     * Data caps: Many ISPs now have limits on how much data you can consume, putting a limit on how much you can watch each month, even with unlimited plans
@@ -42,15 +44,18 @@ Cons:
  IP stands for Internet Protocol, the “language” used to transfer packets of data between computers attached to the Internet network. IPTV is a platform where videos are used as per protocol streaming. This makes it a private managed content delivery network.
 
 Pros:
+
    * Quality: High-quality video with fewer interruptions than OTT streaming due to privately managed content delivery network.
    * Programming: View-on-demand and get shows date of release.
    * Installation: Requires no special installation aside from a set-top box, assuming you already have broadband Internet.
 
 Cons:
+
    * Price: Sold as a subscription at comparable rates to cable TV.
    * Quality: Since it comes over the Internet, it can get slowed down during peak hours.
 
 IPTV services can be classified into three main groups:
+
    * Live television: With or without interactivity related to the current TV show.
    * Time-shifted television: Catch-up TV (replays a TV show that was broadcast hours or days ago), Start-over TV (replays the current TV show from its beginning)
    * Video on demand (VOD): Browse a catalog of videos, not related to TV programming.
