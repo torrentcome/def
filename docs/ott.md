@@ -36,9 +36,9 @@ Pros:
 
 Cons:
 
-    * Quality: Subject to Internet speed, with “buffering” and other wait-times common for slow connections and peak-hour viewing.
-    * Programming: While most shows can be found via major streaming services, some are cable-only and they generally don’t reach OTT streaming until the end of the season.
-    * Data caps: Many ISPs now have limits on how much data you can consume, putting a limit on how much you can watch each month, even with unlimited plans
+- Quality: Subject to Internet speed, with “buffering” and other wait-times common for slow connections and peak-hour viewing.
+- Programming: While most shows can be found via major streaming services, some are cable-only and they generally don’t reach OTT streaming until the end of the season.
+- Data caps: Many ISPs now have limits on how much data you can consume, putting a limit on how much you can watch each month, even with unlimited plans
 
 ### IPTV
  IP stands for Internet Protocol, the “language” used to transfer packets of data between computers attached to the Internet network. IPTV is a platform where videos are used as per protocol streaming. This makes it a private managed content delivery network.
