@@ -3,7 +3,7 @@ site_name: Def
 theme: 
  name: material
  palette:
-  primary: dark
+  primary: black
   accent: pink
  icon:
   logo: material/bottle-tonic-skull
