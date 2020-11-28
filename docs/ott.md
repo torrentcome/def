@@ -1,7 +1,9 @@
 # Ott / Iptv
 ## OTT = Over-the-top media service
 
-An over-the-top (OTT) media service is a streaming media service offered directly to viewers via the Internet. OTT bypasses cable, broadcast, and satellite television platforms, the companies that traditionally act as a controller or distributor of such content.[1] It has also been used to describe no-carrier cellphones, where all communications are charged as data,[2] avoiding monopolistic competition, or apps for phones that transmit data in this manner, including both those that replace other call methods[3][4] and those that update software.[4][5]
+An over-the-top (OTT) media service is a streaming media service offered directly to viewers via the Internet. 
+OTT bypasses cable, broadcast, and satellite television platforms, the companies that traditionally act as a controller or distributor of such content.
+It has also been used to describe no-carrier cellphones, where all communications are charged as data, avoiding monopolistic competition, or apps for phones that transmit data in this manner, including both those that replace other call methods and those that update software.
 
 The term is most synonymous with subscription-based video-on-demand (SVoD) services that offer access to film and television content (including existing series acquired from other producers, as well as original content produced specifically for the service).
 
@@ -34,9 +36,10 @@ Pros:
 
 Cons:
 
-    * Quality: Subject to Internet speed, with “buffering” and other wait-times common for slow connections and peak-hour viewing.
-    * Programming: While most shows can be found via major streaming services, some are cable-only and they generally don’t reach OTT streaming until the end of the season.
-    *Data caps: Many ISPs now have limits on how much data you can consume, putting a limit on how much you can watch each month, even with unlimited plans
+- Quality: Subject to Internet speed, with “buffering” and other wait-times common for slow connections and peak-hour viewing.
+- Programming: While most shows can be found via major streaming services, some are cable-only and they generally don’t reach OTT streaming until the end of the season.
+- Data caps: Many ISPs now have limits on how much data you can consume, putting a limit on how much you can watch each month, even with unlimited plans
+
 ### IPTV
  IP stands for Internet Protocol, the “language” used to transfer packets of data between computers attached to the Internet network. IPTV is a platform where videos are used as per protocol streaming. This makes it a private managed content delivery network.
 
@@ -56,5 +59,3 @@ IPTV services can be classified into three main groups:
    * Live television: With or without interactivity related to the current TV show.
    * Time-shifted television: Catch-up TV (replays a TV show that was broadcast hours or days ago), Start-over TV (replays the current TV show from its beginning)
    * Video on demand (VOD): Browse a catalog of videos, not related to TV programming.
-
-

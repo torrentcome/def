@@ -4,10 +4,9 @@ It's a software-interface for the android system, which can be used to connect a
 It can be used to execute commands on the phone or transfer data between the device and the computer.
 
 The tool is part of the Android SDK (Android Software Development Kit) and is located in the subdirectory platform-tools.
-
-### A lot of command
-
+```
 adb help // List all comands
+```
 
 ### Adb Server
 ```
@@ -111,6 +110,7 @@ adb shell wm density reset
 ```
 adb shell input text 'Wow, it so cool feature'
 ```
+
 ### Screenshot
 ```
 adb shell screencap -p /sdcard/screenshot.png
@@ -120,6 +120,7 @@ shell@ $ screencap /sdcard/screen.png
 shell@ $ exit
 $ adb pull /sdcard/screen.png
 ```
+
 ### Record video
 ```
 adb shell screenrecord /sdcard/NotAbleToLogin.mp4
@@ -129,26 +130,29 @@ shell@ $ screenrecord --verbose /sdcard/demo.mp4
 (press Control + C to stop)
 shell@ $ exit
 $ adb pull /sdcard/demo.mp4
-
 ```
-#### ShPref replace org.example.app with your application id
 
+#### ShPref replace org.example.app with your application id
 ### Add a value to default shared preferences.
 ```
 adb shell 'am broadcast -a org.example.app.sp.PUT --es key key_name --es value "hello world!"'
 ```
+
 ### Remove a value to default shared preferences.
 ```
 adb shell 'am broadcast -a org.example.app.sp.REMOVE --es key key_name'
 ```
+
 ### Clear all default shared preferences.
 ```
 adb shell 'am broadcast -a org.example.app.sp.CLEAR --es key key_name'
 ```
+
 ### It's also possible to specify shared preferences file.
 ```
 adb shell 'am broadcast -a org.example.app.sp.PUT --es name Game --es key level --ei value 10'
 ```
+
 ### Data types
 ```
 adb shell 'am broadcast -a org.example.app.sp.PUT --es key string --es value "hello world!"'
@@ -157,14 +161,17 @@ adb shell 'am broadcast -a org.example.app.sp.PUT --es key float --ef value 3.14
 adb shell 'am broadcast -a org.example.app.sp.PUT --es key int --ei value 2015'
 adb shell 'am broadcast -a org.example.app.sp.PUT --es key long --el value 9223372036854775807'
 ```
+
 ### Restart application process after making changes
 ```
 adb shell 'am broadcast -a org.example.app.sp.CLEAR --ez restart true'
 ```
+
 ### Monkey
 ```
 adb shell monkey -p com.myAppPackage -v 10000 -s 100 // monkey tool is generating 10.000 random events on the real device
 ```
+
 ### Paths
 ```
 /data/data/<package>/databases (app databases)
@@ -180,21 +187,28 @@ adb shell ls (list directory contents)
 adb shell ls -s (print size of each file)
 adb shell ls -R (list subdirectories recursively)
 ```
+
 ### Device information
 ```
 adb get-statе (print device state)
 adb get-serialno (get the serial number)
+
 adb shell dumpsys iphonesybinfo (get the IMEI)
+
 adb shell netstat (list TCP connectivity)
+
 adb shell pwd (print current working directory)
 adb shell dumpsys battery (battery status)
 adb shell pm list features (list phone features)
+
 adb shell service list (list all services)
+
 adb shell dumpsys activity <package>/<activity> (activity info)
 adb shell ps (print process status)
 adb shell wm size (displays the current screen resolution)
 dumpsys window windows | grep -E 'mCurrentFocus|mFocusedApp' (print current app's opened activity)
 ```
+
 ### Package info
 ```
 adb shell list packages (list package names)
@@ -202,10 +216,13 @@ adb shell list packages -r (list package name + path to apks)
 adb shell list packages -3 (list third party package names)
 adb shell list packages -s (list only system packages)
 adb shell list packages -u (list package names + uninstalled)
+
 adb shell dumpsys package packages (list info on all apps)
+
 adb shell dump <name> (list info on one package)
 adb shell path <package> (path to the apk file)
 ```
+
 ### Configure Settings Commands
 ```
 adb shell dumpsys battery set level <n> (change the level from 0 to 100)
@@ -215,16 +232,21 @@ adb shell dumpsys battery set usb <n> (change the status of USB connection. ON o
 adb shell wm size WxH (sets the resolution to WxH)
 
 ```
+
 ### Device Related Commands
 ```
 adb reboot-recovery (reboot device into recovery mode)
+
 adb reboot fastboot (reboot device into recovery mode)
 adb shell screencap -p "/path/to/screenshot.png" (capture screenshot)
 adb shell screenrecord "/path/to/record.mp4" (record device screen)
+
 adb backup -apk -all -f backup.ab (backup settings and apps)
+
 adb backup -apk -shared -all -f backup.ab (backup settings, apps and shared storage)
 adb backup -apk -nosystem -all -f backup.ab (backup only non-system apps)
 adb restore backup.ab (restore a previous backup)
+
 adb shell am start|startservice|broadcast <INTENT>[<COMPONENT>]
 -a <ACTION> e.g. android.intent.action.VIEW
 -c <CATEGORY> e.g. android.intent.category.LAUNCHER (start activity intent)
@@ -232,11 +254,13 @@ adb shell am start|startservice|broadcast <INTENT>[<COMPONENT>]
 adb shell am start -a android.intent.action.VIEW -d URL (open URL)
 adb shell am start -t image/* -a android.intent.action.VIEW (opens gallery)
 ```
+
 ### Logs
 ```
 adb logcat [options] [filter] [filter] (view device log)
 adb bugreport (print bug reports)
 ```
+
 ### Other
 ```
 adb backup // Create a full backup of your phone and save to the computer.
@@ -247,20 +271,22 @@ fastboot devices
 // Check connection and get basic information about devices connected to the computer.
 // This is essentially the same command as adb devices from earlier. 
 //However, it works in the bootloader, which ADB does not. Handy for ensuring that you have properly established a connection.
-
 --------------------------------------------------------------------------------
 ```
+
 ### Shared Preferences
 
 ##### replace org.example.app with your application id
 ##### Add a value to default shared preferences.
 ```
 adb shell 'am broadcast -a org.example.app.sp.PUT --es key key_name --es value "hello world!"'
+
 ```
 ### Remove a value to default shared preferences.
 ```
 adb shell 'am broadcast -a org.example.app.sp.REMOVE --es key key_name'
 ```
+
 ### Clear all default shared preferences.
 ```
 adb shell 'am broadcast -a org.example.app.sp.CLEAR --es key key_name'
@@ -269,6 +295,7 @@ adb shell 'am broadcast -a org.example.app.sp.CLEAR --es key key_name'
 ```
 adb shell 'am broadcast -a org.example.app.sp.PUT --es name Game --es key level --ei value 10'
 ```
+
 ### Data types
 ```
 adb shell 'am broadcast -a org.example.app.sp.PUT --es key string --es value "hello world!"'
@@ -277,6 +304,7 @@ adb shell 'am broadcast -a org.example.app.sp.PUT --es key float --ef value 3.14
 adb shell 'am broadcast -a org.example.app.sp.PUT --es key int --ei value 2015'
 adb shell 'am broadcast -a org.example.app.sp.PUT --es key long --el value 9223372036854775807'
 ```
+
 ### Restart application process after making changes
 ```
 adb shell 'am broadcast -a org.example.app.sp.CLEAR --ez restart true'
@@ -291,22 +319,26 @@ adb shell 'am broadcast -a org.example.app.sp.CLEAR --ez restart true'
 // Use tail to remove the first line. Actually two lines. The first one is just a newline. The second is “List of devices attached.”
 $ adb devices | tail -n +2
 ```
+
 ### Using cut -sf
 ```
 // Cut the last word and any white space off the end of each line.
 $ adb devices | tail -n +2 | cut -sf -1
 ```
+
 ### Using xargs -I
 ```
 // Given the -I option, xargs will perform an action for each line of text that we feed into it.
 // We can give the line a variable name to use in commands that xargs can execute.
 $ adb devices | tail -n +2 | cut -sf -1 | xargs -I X echo X aw yiss
 ```
+
 ### Three options below together
 ```
 // Will print android version of all connected devices
 adb devices | tail -n +2 | cut -sf -1 | xargs -I X adb -s X shell getprop ro.build.version.release  
 ```
+
 ### Using alias
 ```
 -- Example 1 

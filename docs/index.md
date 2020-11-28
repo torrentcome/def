@@ -1,7 +1,7 @@
 # Welcome
 
  * Powered by [mkdocs.org](https://squidfunk.github.io/mkdocs-material/)
- * Test/Run in local by [docker image] (https://github.com/squidfunk/mkdocs-material/blob/master/Dockerfile)
+ * Test/Run in local by [docker image](https://github.com/squidfunk/mkdocs-material/blob/master/)
 
 ## Commands
 
