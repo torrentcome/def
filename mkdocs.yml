@@ -3,9 +3,9 @@ site_name: Def
 theme: 
  name: material
  palette:
-  primary: blue grey
-  accent: lime
+  primary: dark
+  accent: pink
  icon:
   logo: material/bottle-tonic-skull
  favicon: material/bottle-tonic-skull
- font: Roboto
+ font: Roboto Mono
