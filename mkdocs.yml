@@ -4,8 +4,8 @@ theme:
  name: material
  palette:
   scheme: slate
-  primary: deep orange
-  accent: deep orange
+  primary: indigo
+  accent: indigo
  icon:
   logo: material/bottle-tonic-skull
  favicon: material/bottle-tonic-skull
