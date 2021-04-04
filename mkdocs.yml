@@ -3,8 +3,9 @@ site_name: Def
 theme: 
  name: material
  palette:
-  primary: black
-  accent: pink
+  scheme: slate
+  primary: deep orange
+  accent: deep orange
  icon:
   logo: material/bottle-tonic-skull
  favicon: material/bottle-tonic-skull
