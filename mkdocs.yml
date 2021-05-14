@@ -3,8 +3,8 @@ site_name: Def
 theme: 
  name: material
  palette:
-  scheme: slate
-  primary: indigo
+  scheme: default
+  primary: black
   accent: indigo
  icon:
   logo: material/bottle-tonic-skull
