@@ -7,6 +7,6 @@ theme:
   primary: black
   accent: indigo
  icon:
-  logo: material/material-box
- favicon: material/material-box
+  logo: material/beta
+ favicon: material/beta
  font: Roboto Mono
