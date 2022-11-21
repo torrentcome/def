@@ -7,6 +7,6 @@ theme:
   primary: black
   accent: indigo
  icon:
-  logo: material/android-debug-bridge
- favicon: material/android-debug-bridge
+  logo: material/burger-cheese
+ favicon: material/burger-cheese
  font: Roboto Mono
