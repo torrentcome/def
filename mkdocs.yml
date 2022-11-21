@@ -7,6 +7,6 @@ theme:
   primary: black
   accent: indigo
  icon:
-  logo: material/burger-cheese
- favicon: material/burger-cheese
+  logo: material/material-box
+ favicon: material/material-box
  font: Roboto Mono
