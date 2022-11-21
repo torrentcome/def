@@ -1,0 +1,1847 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../material/beta">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+    
+    
+      
+        <title>Adb - Definition && Tips</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.472b142f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.08040f6c.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="pink">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#adb" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Definition &amp;&amp; Tips" class="md-header__button md-logo" aria-label="Definition && Tips" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.23 17.59v5.53H6.88V6.72c0-1.45.43-2.59 1.28-3.44C9 2.43 10.17 2 11.61 2c1.39 0 2.46.34 3.26 1 .79.68 1.18 1.62 1.18 2.81 0 .82-.26 1.59-.78 2.3-.52.71-1.19 1.2-2.02 1.47v.04c1.25.2 2.22.65 2.88 1.38.66.71.99 1.62.99 2.74 0 1.32-.46 2.4-1.37 3.23-.92.83-2.12 1.24-3.62 1.24-1.06 0-2.03-.21-2.9-.62m1.49-6.84V8.83c.87-.11 1.58-.43 2.15-.97.56-.55.84-1.16.84-1.86 0-1.38-.71-2.08-2.11-2.08-.76 0-1.35.24-1.76.73-.41.49-.61 1.17-.61 2.06v8.79c.91.53 1.8.79 2.66.79.84 0 1.5-.22 1.97-.65.47-.44.7-1.06.7-1.85 0-1.79-1.28-2.79-3.84-3.04Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Definition && Tips
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Adb
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Definition &amp;&amp; Tips" class="md-nav__button md-logo" aria-label="Definition && Tips" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.23 17.59v5.53H6.88V6.72c0-1.45.43-2.59 1.28-3.44C9 2.43 10.17 2 11.61 2c1.39 0 2.46.34 3.26 1 .79.68 1.18 1.62 1.18 2.81 0 .82-.26 1.59-.78 2.3-.52.71-1.19 1.2-2.02 1.47v.04c1.25.2 2.22.65 2.88 1.38.66.71.99 1.62.99 2.74 0 1.32-.46 2.4-1.37 3.23-.92.83-2.12 1.24-3.62 1.24-1.06 0-2.03-.21-2.9-.62m1.49-6.84V8.83c.87-.11 1.58-.43 2.15-.97.56-.55.84-1.16.84-1.86 0-1.38-.71-2.08-2.11-2.08-.76 0-1.35.24-1.76.73-.41.49-.61 1.17-.61 2.06v8.79c.91.53 1.8.79 2.66.79.84 0 1.5-.22 1.97-.65.47-.44.7-1.06.7-1.85 0-1.79-1.28-2.79-3.84-3.04Z"/></svg>
+
+    </a>
+    Definition && Tips
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Adb
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Adb
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#adb-android-debug-bridge" class="md-nav__link">
+    ADB = Android Debug Bridge
+  </a>
+  
+    <nav class="md-nav" aria-label="ADB = Android Debug Bridge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adb-server" class="md-nav__link">
+    Adb Server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adb-reboot" class="md-nav__link">
+    Adb Reboot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shell" class="md-nav__link">
+    Shell
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#devices" class="md-nav__link">
+    Devices
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-device-android-version" class="md-nav__link">
+    Get device android version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logcat" class="md-nav__link">
+    Logcat
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#files" class="md-nav__link">
+    Files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#app-install" class="md-nav__link">
+    App install
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uninstalling-app-from-device" class="md-nav__link">
+    Uninstalling app from device
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-app" class="md-nav__link">
+    Update app
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#home-button" class="md-nav__link">
+    Home button
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activity-manager" class="md-nav__link">
+    Activity Manager
+  </a>
+  
+    <nav class="md-nav" aria-label="Activity Manager">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#open-send-sms-screen-with-phone-number-and-the-message" class="md-nav__link">
+    Open send sms screen with phone number and the message:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reset-permissions" class="md-nav__link">
+    Reset permissions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#change-density" class="md-nav__link">
+    Change density
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reset-to-default" class="md-nav__link">
+    Reset to default
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#print-text" class="md-nav__link">
+    Print text
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#screenshot" class="md-nav__link">
+    Screenshot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#record-video" class="md-nav__link">
+    Record video
+  </a>
+  
+    <nav class="md-nav" aria-label="Record video">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shpref-replace-orgexampleapp-with-your-application-id" class="md-nav__link">
+    ShPref replace org.example.app with your application id
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-a-value-to-default-shared-preferences" class="md-nav__link">
+    Add a value to default shared preferences.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remove-a-value-to-default-shared-preferences" class="md-nav__link">
+    Remove a value to default shared preferences.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clear-all-default-shared-preferences" class="md-nav__link">
+    Clear all default shared preferences.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#its-also-possible-to-specify-shared-preferences-file" class="md-nav__link">
+    It's also possible to specify shared preferences file.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-types" class="md-nav__link">
+    Data types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restart-application-process-after-making-changes" class="md-nav__link">
+    Restart application process after making changes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monkey" class="md-nav__link">
+    Monkey
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paths" class="md-nav__link">
+    Paths
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#device-information" class="md-nav__link">
+    Device information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#package-info" class="md-nav__link">
+    Package info
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-settings-commands" class="md-nav__link">
+    Configure Settings Commands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#device-related-commands" class="md-nav__link">
+    Device Related Commands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logs" class="md-nav__link">
+    Logs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other" class="md-nav__link">
+    Other
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shared-preferences" class="md-nav__link">
+    Shared Preferences
+  </a>
+  
+    <nav class="md-nav" aria-label="Shared Preferences">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#replace-orgexampleapp-with-your-application-id" class="md-nav__link">
+    replace org.example.app with your application id
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-a-value-to-default-shared-preferences_1" class="md-nav__link">
+    Add a value to default shared preferences.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remove-a-value-to-default-shared-preferences_1" class="md-nav__link">
+    Remove a value to default shared preferences.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clear-all-default-shared-preferences_1" class="md-nav__link">
+    Clear all default shared preferences.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#its-also-possible-to-specify-shared-preferences-file_1" class="md-nav__link">
+    It's also possible to specify shared preferences file.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-types_1" class="md-nav__link">
+    Data types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restart-application-process-after-making-changes_1" class="md-nav__link">
+    Restart application process after making changes
+  </a>
+  
+    <nav class="md-nav" aria-label="Restart application process after making changes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#few-bash-snippets" class="md-nav__link">
+    Few bash snippets
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-tail-n" class="md-nav__link">
+    Using tail -n
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-cut-sf" class="md-nav__link">
+    Using cut -sf
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-xargs-i" class="md-nav__link">
+    Using xargs -I
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#three-options-below-together" class="md-nav__link">
+    Three options below together
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-alias" class="md-nav__link">
+    Using alias
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agile/" class="md-nav__link">
+        Agile
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../android/" class="md-nav__link">
+        Android
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bsp/" class="md-nav__link">
+        Bsp
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../custom_input/" class="md-nav__link">
+        Custom input android bsp
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dex/" class="md-nav__link">
+        Dex
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eotf/" class="md-nav__link">
+        EOTF
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../epg/" class="md-nav__link">
+        Epg
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fqdn/" class="md-nav__link">
+        Fqdn
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ftth/" class="md-nav__link">
+        Ftth
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gerrit/" class="md-nav__link">
+        Gerrit
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gtvs/" class="md-nav__link">
+        Gtvs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hdcp/" class="md-nav__link">
+        Hdcp
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hdr/" class="md-nav__link">
+        Hdr
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iad/" class="md-nav__link">
+        Iad
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lsn/" class="md-nav__link">
+        lsn
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nat/" class="md-nav__link">
+        Nat
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../olt/" class="md-nav__link">
+        Olt
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ont/" class="md-nav__link">
+        Ont
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../osi/" class="md-nav__link">
+        Osi
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ott/" class="md-nav__link">
+        Ott / Iptv
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pvr/" class="md-nav__link">
+        Pvr
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../selinux/" class="md-nav__link">
+        Selinux
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sip/" class="md-nav__link">
+        Sip
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spdif/" class="md-nav__link">
+        Spdif
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stb/" class="md-nav__link">
+        Stb
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tr-069/" class="md-nav__link">
+        Tr-069
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tv_provider/" class="md-nav__link">
+        Tv provider
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uhd/" class="md-nav__link">
+        Uhd
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../upnp/" class="md-nav__link">
+        Upnp
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#adb-android-debug-bridge" class="md-nav__link">
+    ADB = Android Debug Bridge
+  </a>
+  
+    <nav class="md-nav" aria-label="ADB = Android Debug Bridge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adb-server" class="md-nav__link">
+    Adb Server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adb-reboot" class="md-nav__link">
+    Adb Reboot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shell" class="md-nav__link">
+    Shell
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#devices" class="md-nav__link">
+    Devices
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-device-android-version" class="md-nav__link">
+    Get device android version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logcat" class="md-nav__link">
+    Logcat
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#files" class="md-nav__link">
+    Files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#app-install" class="md-nav__link">
+    App install
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uninstalling-app-from-device" class="md-nav__link">
+    Uninstalling app from device
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-app" class="md-nav__link">
+    Update app
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#home-button" class="md-nav__link">
+    Home button
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activity-manager" class="md-nav__link">
+    Activity Manager
+  </a>
+  
+    <nav class="md-nav" aria-label="Activity Manager">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#open-send-sms-screen-with-phone-number-and-the-message" class="md-nav__link">
+    Open send sms screen with phone number and the message:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reset-permissions" class="md-nav__link">
+    Reset permissions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#change-density" class="md-nav__link">
+    Change density
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reset-to-default" class="md-nav__link">
+    Reset to default
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#print-text" class="md-nav__link">
+    Print text
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#screenshot" class="md-nav__link">
+    Screenshot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#record-video" class="md-nav__link">
+    Record video
+  </a>
+  
+    <nav class="md-nav" aria-label="Record video">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shpref-replace-orgexampleapp-with-your-application-id" class="md-nav__link">
+    ShPref replace org.example.app with your application id
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-a-value-to-default-shared-preferences" class="md-nav__link">
+    Add a value to default shared preferences.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remove-a-value-to-default-shared-preferences" class="md-nav__link">
+    Remove a value to default shared preferences.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clear-all-default-shared-preferences" class="md-nav__link">
+    Clear all default shared preferences.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#its-also-possible-to-specify-shared-preferences-file" class="md-nav__link">
+    It's also possible to specify shared preferences file.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-types" class="md-nav__link">
+    Data types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restart-application-process-after-making-changes" class="md-nav__link">
+    Restart application process after making changes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monkey" class="md-nav__link">
+    Monkey
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paths" class="md-nav__link">
+    Paths
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#device-information" class="md-nav__link">
+    Device information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#package-info" class="md-nav__link">
+    Package info
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-settings-commands" class="md-nav__link">
+    Configure Settings Commands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#device-related-commands" class="md-nav__link">
+    Device Related Commands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logs" class="md-nav__link">
+    Logs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other" class="md-nav__link">
+    Other
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shared-preferences" class="md-nav__link">
+    Shared Preferences
+  </a>
+  
+    <nav class="md-nav" aria-label="Shared Preferences">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#replace-orgexampleapp-with-your-application-id" class="md-nav__link">
+    replace org.example.app with your application id
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-a-value-to-default-shared-preferences_1" class="md-nav__link">
+    Add a value to default shared preferences.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remove-a-value-to-default-shared-preferences_1" class="md-nav__link">
+    Remove a value to default shared preferences.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clear-all-default-shared-preferences_1" class="md-nav__link">
+    Clear all default shared preferences.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#its-also-possible-to-specify-shared-preferences-file_1" class="md-nav__link">
+    It's also possible to specify shared preferences file.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-types_1" class="md-nav__link">
+    Data types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restart-application-process-after-making-changes_1" class="md-nav__link">
+    Restart application process after making changes
+  </a>
+  
+    <nav class="md-nav" aria-label="Restart application process after making changes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#few-bash-snippets" class="md-nav__link">
+    Few bash snippets
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-tail-n" class="md-nav__link">
+    Using tail -n
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-cut-sf" class="md-nav__link">
+    Using cut -sf
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-xargs-i" class="md-nav__link">
+    Using xargs -I
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#three-options-below-together" class="md-nav__link">
+    Three options below together
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-alias" class="md-nav__link">
+    Using alias
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="adb">Adb</h1>
+<h2 id="adb-android-debug-bridge">ADB = Android Debug Bridge</h2>
+<p>It's a software-interface for the android system, which can be used to connect an android device with a computer using an USB cable or a wireless connection. 
+It can be used to execute commands on the phone or transfer data between the device and the computer.</p>
+<p>The tool is part of the Android SDK (Android Software Development Kit) and is located in the subdirectory platform-tools.</p>
+<pre><code>adb help // List all comands
+</code></pre>
+<h3 id="adb-server">Adb Server</h3>
+<pre><code>adb kill-server
+adb start-server 
+</code></pre>
+<h3 id="adb-reboot">Adb Reboot</h3>
+<pre><code>adb reboot
+adb reboot recovery 
+adb reboot-bootloader
+adb root //restarts adb with root permissions
+</code></pre>
+<h3 id="shell">Shell</h3>
+<pre><code>adb shell    // Open or run commands in a terminal on the host Android device.
+</code></pre>
+<h3 id="devices">Devices</h3>
+<pre><code>adb usb
+adb devices   //show devices attached
+adb devices -l //devices (product/model)
+adb connect ip_address_of_device
+</code></pre>
+<h3 id="get-device-android-version">Get device android version</h3>
+<pre><code>adb shell getprop ro.build.version.release 
+</code></pre>
+<h3 id="logcat">Logcat</h3>
+<pre><code>adb logcat
+adb logcat -c // clear // The parameter -c will clear the current logs on the device.
+adb logcat -d &gt; [path_to_file] // Save the logcat output to a file on the local system.
+adb bugreport &gt; [path_to_file] // Will dump the whole device information like dumpstate, dumpsys and logcat output.
+</code></pre>
+<h3 id="files">Files</h3>
+<pre><code>adb push [source] [destination]    // Copy files from your computer to your phone.
+adb pull [device file location] [local file location] // Copy files from your phone to your computer.
+</code></pre>
+<h3 id="app-install">App install</h3>
+<pre><code>adb -e install path/to/app.apk
+
+-d                        - directs command to the only connected USB device...
+-e                        - directs command to the only running emulator...
+-s &lt;serial number&gt;        ...
+-p &lt;product name or path&gt; ...
+The flag you decide to use has to come before the actual adb command:
+
+adb devices | tail -n +2 | cut -sf 1 | xargs -IX adb -s X install -r com.myAppPackage // Install the given app on all connected devices.
+</code></pre>
+<h3 id="uninstalling-app-from-device">Uninstalling app from device</h3>
+<pre><code>adb uninstall com.myAppPackage
+adb uninstall &lt;app .apk name&gt;
+adb uninstall -k &lt;app .apk name&gt; -&gt; &quot;Uninstall .apk withour deleting data&quot;
+
+adb shell pm uninstall com.example.MyApp
+adb shell pm clear [package] // Deletes all data associated with a package.
+
+adb devices | tail -n +2 | cut -sf 1 | xargs -IX adb -s X uninstall com.myAppPackage //Uninstall the given app from all connected devices
+</code></pre>
+<h3 id="update-app">Update app</h3>
+<pre><code>adb install -r yourApp.apk  //  -r means re-install the app and keep its data on the device.
+adb install –k &lt;.apk file path on computer&gt; 
+</code></pre>
+<h3 id="home-button">Home button</h3>
+<pre><code>adb shell am start -W -c android.intent.category.HOME -a android.intent.action.MAIN
+</code></pre>
+<h3 id="activity-manager">Activity Manager</h3>
+<pre><code>adb shell am start -a android.intent.action.VIEW
+adb shell am broadcast -a 'my_action'
+
+adb shell am start -a android.intent.action.CALL -d tel:+972527300294 // Make a call
+</code></pre>
+<h4 id="open-send-sms-screen-with-phone-number-and-the-message">Open send sms screen with phone number and the message:</h4>
+<pre><code>adb shell am start -a android.intent.action.SENDTO -d sms:+972527300294   --es  sms_body &quot;Test --ez exit_on_sent false
+</code></pre>
+<h4 id="reset-permissions">Reset permissions</h4>
+<pre><code>adb shell pm reset-permissions -p your.app.package 
+adb shell pm grant [packageName] [ Permission]  // Grant a permission to an app. 
+adb shell pm revoke [packageName] [ Permission]   // Revoke a permission from an app.
+</code></pre>
+<h4 id="change-density">Change density</h4>
+<pre><code>adb shell wm size 2048x1536
+adb shell wm density 288
+</code></pre>
+<h4 id="reset-to-default">Reset to default</h4>
+<pre><code>adb shell wm size reset
+adb shell wm density reset
+</code></pre>
+<h3 id="print-text">Print text</h3>
+<pre><code>adb shell input text 'Wow, it so cool feature'
+</code></pre>
+<h3 id="screenshot">Screenshot</h3>
+<pre><code>adb shell screencap -p /sdcard/screenshot.png
+
+$ adb shell
+shell@ $ screencap /sdcard/screen.png
+shell@ $ exit
+$ adb pull /sdcard/screen.png
+</code></pre>
+<h3 id="record-video">Record video</h3>
+<pre><code>adb shell screenrecord /sdcard/NotAbleToLogin.mp4
+
+$ adb shell
+shell@ $ screenrecord --verbose /sdcard/demo.mp4
+(press Control + C to stop)
+shell@ $ exit
+$ adb pull /sdcard/demo.mp4
+</code></pre>
+<h4 id="shpref-replace-orgexampleapp-with-your-application-id">ShPref replace org.example.app with your application id</h4>
+<h3 id="add-a-value-to-default-shared-preferences">Add a value to default shared preferences.</h3>
+<pre><code>adb shell 'am broadcast -a org.example.app.sp.PUT --es key key_name --es value &quot;hello world!&quot;'
+</code></pre>
+<h3 id="remove-a-value-to-default-shared-preferences">Remove a value to default shared preferences.</h3>
+<pre><code>adb shell 'am broadcast -a org.example.app.sp.REMOVE --es key key_name'
+</code></pre>
+<h3 id="clear-all-default-shared-preferences">Clear all default shared preferences.</h3>
+<pre><code>adb shell 'am broadcast -a org.example.app.sp.CLEAR --es key key_name'
+</code></pre>
+<h3 id="its-also-possible-to-specify-shared-preferences-file">It's also possible to specify shared preferences file.</h3>
+<pre><code>adb shell 'am broadcast -a org.example.app.sp.PUT --es name Game --es key level --ei value 10'
+</code></pre>
+<h3 id="data-types">Data types</h3>
+<pre><code>adb shell 'am broadcast -a org.example.app.sp.PUT --es key string --es value &quot;hello world!&quot;'
+adb shell 'am broadcast -a org.example.app.sp.PUT --es key boolean --ez value true'
+adb shell 'am broadcast -a org.example.app.sp.PUT --es key float --ef value 3.14159'
+adb shell 'am broadcast -a org.example.app.sp.PUT --es key int --ei value 2015'
+adb shell 'am broadcast -a org.example.app.sp.PUT --es key long --el value 9223372036854775807'
+</code></pre>
+<h3 id="restart-application-process-after-making-changes">Restart application process after making changes</h3>
+<pre><code>adb shell 'am broadcast -a org.example.app.sp.CLEAR --ez restart true'
+</code></pre>
+<h3 id="monkey">Monkey</h3>
+<pre><code>adb shell monkey -p com.myAppPackage -v 10000 -s 100 // monkey tool is generating 10.000 random events on the real device
+</code></pre>
+<h3 id="paths">Paths</h3>
+<pre><code>/data/data/&lt;package&gt;/databases (app databases)
+/data/data/&lt;package&gt;/shared_prefs/ (shared preferences)
+/data/app (apk installed by user)
+/system/app (pre-installed APK files)
+/mmt/asec (encrypted apps) (App2SD)
+/mmt/emmc (internal SD Card)
+/mmt/adcard (external/Internal SD Card)
+/mmt/adcard/external_sd (external SD Card)
+
+adb shell ls (list directory contents)
+adb shell ls -s (print size of each file)
+adb shell ls -R (list subdirectories recursively)
+</code></pre>
+<h3 id="device-information">Device information</h3>
+<pre><code>adb get-statе (print device state)
+adb get-serialno (get the serial number)
+
+adb shell dumpsys iphonesybinfo (get the IMEI)
+
+adb shell netstat (list TCP connectivity)
+
+adb shell pwd (print current working directory)
+adb shell dumpsys battery (battery status)
+adb shell pm list features (list phone features)
+
+adb shell service list (list all services)
+
+adb shell dumpsys activity &lt;package&gt;/&lt;activity&gt; (activity info)
+adb shell ps (print process status)
+adb shell wm size (displays the current screen resolution)
+dumpsys window windows | grep -E 'mCurrentFocus|mFocusedApp' (print current app's opened activity)
+</code></pre>
+<h3 id="package-info">Package info</h3>
+<pre><code>adb shell list packages (list package names)
+adb shell list packages -r (list package name + path to apks)
+adb shell list packages -3 (list third party package names)
+adb shell list packages -s (list only system packages)
+adb shell list packages -u (list package names + uninstalled)
+
+adb shell dumpsys package packages (list info on all apps)
+
+adb shell dump &lt;name&gt; (list info on one package)
+adb shell path &lt;package&gt; (path to the apk file)
+</code></pre>
+<h3 id="configure-settings-commands">Configure Settings Commands</h3>
+<pre><code>adb shell dumpsys battery set level &lt;n&gt; (change the level from 0 to 100)
+adb shell dumpsys battery set status&lt;n&gt; (change the level to unknown, charging, discharging, not charging or full)
+adb shell dumpsys battery reset (reset the battery)
+adb shell dumpsys battery set usb &lt;n&gt; (change the status of USB connection. ON or OFF)
+adb shell wm size WxH (sets the resolution to WxH)
+
+</code></pre>
+<h3 id="device-related-commands">Device Related Commands</h3>
+<pre><code>adb reboot-recovery (reboot device into recovery mode)
+
+adb reboot fastboot (reboot device into recovery mode)
+adb shell screencap -p &quot;/path/to/screenshot.png&quot; (capture screenshot)
+adb shell screenrecord &quot;/path/to/record.mp4&quot; (record device screen)
+
+adb backup -apk -all -f backup.ab (backup settings and apps)
+
+adb backup -apk -shared -all -f backup.ab (backup settings, apps and shared storage)
+adb backup -apk -nosystem -all -f backup.ab (backup only non-system apps)
+adb restore backup.ab (restore a previous backup)
+
+adb shell am start|startservice|broadcast &lt;INTENT&gt;[&lt;COMPONENT&gt;]
+-a &lt;ACTION&gt; e.g. android.intent.action.VIEW
+-c &lt;CATEGORY&gt; e.g. android.intent.category.LAUNCHER (start activity intent)
+
+adb shell am start -a android.intent.action.VIEW -d URL (open URL)
+adb shell am start -t image/* -a android.intent.action.VIEW (opens gallery)
+</code></pre>
+<h3 id="logs">Logs</h3>
+<pre><code>adb logcat [options] [filter] [filter] (view device log)
+adb bugreport (print bug reports)
+</code></pre>
+<h3 id="other">Other</h3>
+<pre><code>adb backup // Create a full backup of your phone and save to the computer.
+adb restore // Restore a backup to your phone.
+adb sideload //  Push and flash custom ROMs and zips from your computer.
+
+fastboot devices
+// Check connection and get basic information about devices connected to the computer.
+// This is essentially the same command as adb devices from earlier. 
+//However, it works in the bootloader, which ADB does not. Handy for ensuring that you have properly established a connection.
+--------------------------------------------------------------------------------
+</code></pre>
+<h3 id="shared-preferences">Shared Preferences</h3>
+<h5 id="replace-orgexampleapp-with-your-application-id">replace org.example.app with your application id</h5>
+<h5 id="add-a-value-to-default-shared-preferences_1">Add a value to default shared preferences.</h5>
+<pre><code>adb shell 'am broadcast -a org.example.app.sp.PUT --es key key_name --es value &quot;hello world!&quot;'
+
+</code></pre>
+<h3 id="remove-a-value-to-default-shared-preferences_1">Remove a value to default shared preferences.</h3>
+<pre><code>adb shell 'am broadcast -a org.example.app.sp.REMOVE --es key key_name'
+</code></pre>
+<h3 id="clear-all-default-shared-preferences_1">Clear all default shared preferences.</h3>
+<pre><code>adb shell 'am broadcast -a org.example.app.sp.CLEAR --es key key_name'
+</code></pre>
+<h3 id="its-also-possible-to-specify-shared-preferences-file_1">It's also possible to specify shared preferences file.</h3>
+<pre><code>adb shell 'am broadcast -a org.example.app.sp.PUT --es name Game --es key level --ei value 10'
+</code></pre>
+<h3 id="data-types_1">Data types</h3>
+<pre><code>adb shell 'am broadcast -a org.example.app.sp.PUT --es key string --es value &quot;hello world!&quot;'
+adb shell 'am broadcast -a org.example.app.sp.PUT --es key boolean --ez value true'
+adb shell 'am broadcast -a org.example.app.sp.PUT --es key float --ef value 3.14159'
+adb shell 'am broadcast -a org.example.app.sp.PUT --es key int --ei value 2015'
+adb shell 'am broadcast -a org.example.app.sp.PUT --es key long --el value 9223372036854775807'
+</code></pre>
+<h3 id="restart-application-process-after-making-changes_1">Restart application process after making changes</h3>
+<pre><code>adb shell 'am broadcast -a org.example.app.sp.CLEAR --ez restart true'
+--------------------------------------------------------------------------------
+</code></pre>
+<h4 id="few-bash-snippets">Few bash snippets</h4>
+<p>@Source (https://jonfhancock.com/bash-your-way-to-better-android-development-1169bc3e0424)</p>
+<h3 id="using-tail-n">Using tail -n</h3>
+<pre><code>// Use tail to remove the first line. Actually two lines. The first one is just a newline. The second is “List of devices attached.”
+$ adb devices | tail -n +2
+</code></pre>
+<h3 id="using-cut-sf">Using cut -sf</h3>
+<pre><code>// Cut the last word and any white space off the end of each line.
+$ adb devices | tail -n +2 | cut -sf -1
+</code></pre>
+<h3 id="using-xargs-i">Using xargs -I</h3>
+<pre><code>// Given the -I option, xargs will perform an action for each line of text that we feed into it.
+// We can give the line a variable name to use in commands that xargs can execute.
+$ adb devices | tail -n +2 | cut -sf -1 | xargs -I X echo X aw yiss
+</code></pre>
+<h3 id="three-options-below-together">Three options below together</h3>
+<pre><code>// Will print android version of all connected devices
+adb devices | tail -n +2 | cut -sf -1 | xargs -I X adb -s X shell getprop ro.build.version.release  
+</code></pre>
+<h3 id="using-alias">Using alias</h3>
+<pre><code>-- Example 1 
+alias tellMeMore=echo
+tellMeMore &quot;hi there&quot;
+Output =&gt; hi there
+-- Example 2
+// Define alias
+alias apkinstall=&quot;adb devices | tail -n +2 | cut -sf 1 | xargs -I X adb -s X install -r $1&quot;
+// And you can use it later 
+apkinstall ~/Downloads/MyAppRelease.apk  // Install an apk on all devices
+-- Example 3
+alias rmapp=&quot;adb devices | tail -n +2 | cut -sf 1 | xargs -I X adb -s X uninstall $1&quot;
+rmapp com.example.myapp // Uninstall a package from all devices
+-- Example 4
+alias clearapp=&quot;adb devices | tail -n +2 | cut -sf 1 | xargs -I X adb -s X shell pm clear $1&quot;
+clearapp com.example.myapp  // Clear data on all devices (leave installed)
+-- Example 5
+alias startintent=&quot;adb devices | tail -n +2 | cut -sf 1 | xargs -I X adb -s X shell am start $1&quot;
+startintent https://twitter.com/JonFHancock // Launch a deep link on all devices
+
+
+Setting up your .bash_profile
+Finally, to make this all reusable even after rebooting your computer (aliases only last through the current session), we have to add these to your .bash_profile. You might or might not already have a .bash_profile, so let’s make sure we append to it rather than overwriting it. Just open a terminal, and run the following command
+
+touch .bash_profile &amp;&amp; open .bash_profile
+
+This will create it if it doesn’t already exist, and open it in a text editor either way. Now just copy and paste all of the aliases into it, save, and close.
+
+alias startintent=&quot;adb devices | tail -n +2 | cut -sf 1 | xargs -I X adb -s X shell am start $1&quot;
+alias apkinstall=&quot;adb devices | tail -n +2 | cut -sf 1 | xargs -I X adb -s X install -r $1&quot;
+alias rmapp=&quot;adb devices | tail -n +2 | cut -sf 1 | xargs -I X adb -s X uninstall $1&quot;
+alias clearapp=&quot;adb devices | tail -n +2 | cut -sf 1 | xargs -I X adb -s X shell pm clear $1&quot;
+</code></pre>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Welcome" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Welcome
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../agile/" class="md-footer__link md-footer__link--next" aria-label="Next: Agile" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Agile
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d6c3db9e.min.js"></script>
+      
+    
+  </body>
+</html>
