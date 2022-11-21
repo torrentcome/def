@@ -1,10 +1,10 @@
-site_name: Def
+site_name: Definition && Tips
 
 theme: 
  name: material
  palette:
   scheme: default
-  primary: blue grey
+  primary: white
   accent: pink
  icon:
   logo: material/beta
